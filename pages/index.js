@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import MeetupList from "../components/meetups/MeetupList";
+import API from '../helpers/apis'
 
 const HomePage = (props) => {
   return (
@@ -25,8 +26,9 @@ const HomePage = (props) => {
 //   };
 // };
 export const getStaticProps = async () => {
-  const response = await fetch("http://127.0.0.1:3000/api/meetups");
-  const meetups = await response.json();
+  const api = API();
+  const response = await api.get("/api/meetups");
+  const meetups = response.data;
   return {
     props: {
       meetups: meetups.data.map((meetup) => ({
