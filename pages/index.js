@@ -25,7 +25,8 @@ const HomePage = (props) => {
 //     },
 //   };
 // };
-export const getStaticProps = async () => {
+
+export const getServerSideProps = async () => {
   const api = API();
   const response = await api.get("/api/meetups");
   const meetups = response.data;
@@ -39,7 +40,6 @@ export const getStaticProps = async () => {
         id: meetup._id.toString(),
       })),
     },
-    revalidate: 10,
   };
 };
 export default HomePage;

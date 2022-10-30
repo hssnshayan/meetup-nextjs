@@ -20,20 +20,21 @@ const MeetupDetail = (props) => {
   );
 };
 
-export const getStaticPaths = async () => {
-  const api = API();
-  const response = await api.get("/api/fetch-ids");
-  const meetupIds = response.data;
-  return {
-    fallback: 'blocking',
-    paths: meetupIds.data.map((meetup) => ({
-      params: {
-        meetupId: meetup._id.toString(),
-      },
-    })),
-  };
-};
-export const getStaticProps = async (context) => {
+// export const getStaticPaths = async () => {
+//   const api = API();
+//   const response = await api.get("/api/fetch-ids");
+//   const meetupIds = response.data;
+//   return {
+//     fallback: 'blocking',
+//     paths: meetupIds.data.map((meetup) => ({
+//       params: {
+//         meetupId: meetup._id.toString(),
+//       },
+//     })),
+//   };
+// };
+
+export const getServerSideProps = async (context) => {
   const api = API();
   const meetupId = context.params.meetupId;
   const response = await api.get(`/api/fetch-data?id=${meetupId}`);
