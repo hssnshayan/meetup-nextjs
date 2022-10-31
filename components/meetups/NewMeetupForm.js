@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
@@ -8,6 +8,7 @@ function NewMeetupForm(props) {
   const imageInputRef = useRef();
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
+  const [showSubmitMessage, setShowSubmitMessage]= useState(false);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -27,9 +28,16 @@ function NewMeetupForm(props) {
     props.onAddMeetup(meetupData);
   }
 
+  function demoClickHandler(event){
+    event.preventDefault();
+    setShowSubmitMessage(true);
+  }
+
   return (
     <Card>
-      <form className={classes.form} onSubmit={submitHandler}>
+      {/* the following line of code should be replaced with next one to submit form */}
+      {/* <form classNa me={classes.form} onSubmit={submitHandler}> */}
+      <form classNa me={classes.form}>
         <div className={classes.control}>
           <label htmlFor='title'>Meetup Title</label>
           <input type='text' required id='title' ref={titleInputRef} />
@@ -52,7 +60,10 @@ function NewMeetupForm(props) {
           ></textarea>
         </div>
         <div className={classes.actions}>
-          <button>Add Meetup</button>
+           {/* the following line of code should be replaced with next one to submit form */}
+          {/* <button>Add Meetup</button> */}
+          <button onClick={demoClickHandler}>Add Meetup</button>
+          {showSubmitMessage && <p>Submitting new item is disabled for demo view!</p>}
         </div>
       </form>
     </Card>
