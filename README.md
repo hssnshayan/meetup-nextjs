@@ -9,4 +9,4 @@ Next.js is an open-source web development framework created by Vercel enabling R
 It should be noted that this app is developed during the Nextjs course with dear [Maximilian Schwarzmueller](https://github.com/mschwarzmueller) :heart:.
 Also, **.env** file is ignored for security reasons :innocent:
 
-**The online version of this project is avalable [HERE](https://meetup-nextjs-beta.vercel.app/).**
+**The online version of this project is avalable <a href="https://meetup-nextjs-beta.vercel.app/" target="_blank">HERE</a>.**
